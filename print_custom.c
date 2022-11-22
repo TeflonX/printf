@@ -10,7 +10,6 @@
  * if a flag is passed to _printf
  * Return: number of char printed
  */
-
 int print_bigS(va_list l, flags_t *f)
 {
 	int i, count = 0;
@@ -70,13 +69,10 @@ int print_rev(va_list l, flags_t *f)
  * if a flag is passed to _printf
  * Return: length of the printed string
  */
-
 int print_rot13(va_list l, flags_t *f)
 {
 	int i, j;
-
-	char rot13[] = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJ
-		KLMNOPQRSTUVWXYZ";
+	char rot13[] = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
 	char ROT13[] = "nopqrstuvwxyzabcdefghijklmNOPQRSTUVWXYZABCDEFGHIJKLM";
 	char *s = va_arg(l, char *);
 
@@ -110,5 +106,3 @@ int print_percent(va_list l, flags_t *f)
 	(void)f;
 	return (_putchar('%'));
 }
-
-

@@ -1,4 +1,5 @@
 #include "main.h"
+
 /**
  * _printf - produces output according to a format
  * @format: format string containing the characters and the specifiers
@@ -7,7 +8,6 @@
  * specifiers contained into fmt
  * Return: length of the formatted output string
  */
-
 int _printf(const char *format, ...)
 {
 	int (*pfunc)(va_list, flags_t *);
@@ -35,7 +35,7 @@ int _printf(const char *format, ...)
 			while (get_flag(*p, &flags))
 				p++;
 			pfunc = get_print(*p);
-			count += (pfunc);
+			count += (pfunc)
 				? pfunc(arguments, &flags)
 				: _printf("%%%c", *p);
 		} else
