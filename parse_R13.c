@@ -23,6 +23,7 @@ int parse_R13(char *buff_dest, va_list arg, int buff_count)
 		for (i = 0; keys[i]; i++)
 		{
 			if (str[j] == keys[i])
+			{
 				buff_dest[buff_count] = keynew[i];
 				break;
 			}

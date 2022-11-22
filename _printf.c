@@ -14,10 +14,10 @@ int _printf(const char *format, ...)
 	char buffer[2000];
 
 	call_t container[] = {
-		{'c', parse_char}, {'s', parse_str}, {'i', parse_int},
-		{'d', parse_int}, {'%', parse_perc}, {'b', parse_bin},
-		{'o', parse_oct}, {'x', parse_hex}, {'X', parse_X},
-		{'u', parse_uint}, {'R', parse_R13}, {'r', parse_rev},
+		{'c', parse_char}, {'s', parse_str}, {'%', parse_perc},
+		{'i', parse_int}, {'d', parse_int}, {'x', parse_hex}, 
+		{'b', parse_bin}, {'o', parse_oct}, {'r', parse_rev},
+		{'X', parse_X}, {'u', parse_uint}, {'R', parse_R13},
 		{'\0', NULL}
 		};
 	if (!format)
@@ -35,21 +35,22 @@ int _printf(const char *format, ...)
 				if (format[i] == container[j].t)
 				{
 					buff_count = container[j].f(buffer,
-						arg, buff_count);
+					arg, buff_count);
 					break;
 				}
 			}
 			if (buff_count == prev_buff_count && format[i])
 			{
 				i--, buffer[buff_count] = format[i],
-				buff_count++
+				buff_count++;
 			}
-			else
-				buff[buff_count] = format[i], buff_count++;
-			i++
 		}
-		va_end(arg);
-		buffer[buff_count] = '\0';
-		print_buff(buffer, buff_count);
-		return (buff_count);
+		else
+			buffer[buff_count] = format[i], buff_count++;
+		i++;
 	}
+	va_end(arg);
+	buffer[buff_count] = '\0';
+	print_buff(buffer, buff_count);
+	return (buff_count);
+}
