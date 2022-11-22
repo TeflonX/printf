@@ -28,6 +28,11 @@ typedef struct flags
  * @c: format specifier
  * @f: pointer to the correct printing function
  */
+typedef struct printHandler
+{
+	char c;
+	int (*f)(va_list ap, flags_t *f);
+} ph;
 
 /* print_nums */
 int print_int(va_list l, flags_t *f);
